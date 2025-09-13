@@ -31,7 +31,7 @@
                                     <div class="col-12">
                                         <div class="btn-group" role="group">
                                             <a class="btn btn-primary" href="{{ route('add-product.index') }}" role="button"><i class="fas fa-fw fa-plus"></i>Add Product</a>
-                                            <a class="btn btn-success" href="#" role="button"><i class="fas fa-fw fa-file-excel"></i>Import Products</a>
+                                            <a class="btn btn-success" href="{{ route('import-product.index') }}" role="button"><i class="fas fa-fw fa-file-excel"></i>Import Products</a>
                                         </div>
                                     </div>
                                 </div>
