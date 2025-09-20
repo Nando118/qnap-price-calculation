@@ -72,3 +72,20 @@
 
 </style>
 @endpush
+
+@section('css')
+    {{-- Add here extra stylesheets --}}
+    <link rel="stylesheet" href="{{ asset("libs/dataTables/css/dataTables-bootstrap4-min.css") }}" />
+    <link rel="stylesheet" href="{{ asset("libs/dataTables/css/buttons-bootstrap4-min.css") }}">
+@stop
+
+@section('js')
+    <script src="{{ asset("libs/dataTables/js/jquery-dataTables-min.js") }}"></script>
+    <script src="{{ asset("libs/dataTables/js/dataTables-bootstrap4-min.js") }}"></script>
+    <script src="{{ asset("libs/dataTables/js/dataTables-buttons-min.js") }}"></script>
+    <script src="{{ asset("libs/dataTables/js/buttons-bootstrap4-min.js") }}"></script>
+    <script src="{{ asset("libs/dataTables/js/jszip-min.js") }}"></script>
+    <script src="{{ asset("libs/dataTables/js/buttons-html5-min.js") }}"></script>
+    <script src="{{ asset("libs/dataTables/js/buttons-print-min.js") }}"></script>
+    <script src="{{ asset("libs/moment/moment.js") }}"></script>
+@stop

@@ -35,6 +35,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <table id="products-table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>SKU</th>
+                                            <th>Distri Price</th>
+                                            <th>SI Price</th>
+                                            <th>MD Price</th>
+                                            <th>SDP Price</th>
+                                            <th>SRP Price</th>
+                                            <th>LKPP Price</th>
+                                            <th>Created At</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -43,3 +59,68 @@
         </div>
     </section>
 @stop
+
+@push('js')
+<script>
+    $(document).ready(function() {
+        $('#products-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route("qnap-products.data") }}',
+                columns: [
+                    {
+                        data: null,
+                        name: 'no',
+                        orderable: false,
+                        searchable: false,
+                        render: function (data, type, row, meta) {
+                            // Menampilkan nomor index (incremented by 1) pada setiap baris
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    { data: 'sku', name: 'sku' },
+                    {
+                        data: 'distri_price',
+                        name: 'distri_price',
+                        render: $.fn.dataTable.render.number('.', ',', 0, '')
+                    },
+                    {
+                        data: 'si_price',
+                        name: 'si_price',
+                        render: $.fn.dataTable.render.number('.', ',', 0, '')
+                    },
+                    {
+                        data: 'md_price',
+                        name: 'md_price',
+                        render: $.fn.dataTable.render.number('.', ',', 0, '')
+                    },
+                    {
+                        data: 'sdp_price',
+                        name: 'sdp_price',
+                        render: $.fn.dataTable.render.number('.', ',', 0, '')
+                    },
+                    {
+                        data: 'srp_price',
+                        name: 'srp_price',
+                        render: $.fn.dataTable.render.number('.', ',', 0, '')
+                     },
+                    {
+                        data: 'lkpp_price',
+                        name: 'lkpp_price',
+                        render: $.fn.dataTable.render.number('.', ',', 0, '')
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at',
+                        render: function (data, type, row) {
+                            // Format tanggal menjadi DD-MM-YYYY
+                            return moment(data).format('DD-MM-YYYY');
+                        }
+                    },
+                    { data: 'action', name: 'action', orderable: false, searchable: false },
+                ],
+                order: [8, 'desc'],
+        });
+    });
+</script>
+@endpush

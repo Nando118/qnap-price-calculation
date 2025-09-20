@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function(){
 
     // MASTER DATA - QNAP PRODUCTS
     Route::get('/qnap-products', [QNAPProductController::class, 'index'])->name('qnap-products.index');
+    Route::get('/qnap-products/get-data', [QNAPProductController::class, 'getData'])->name('qnap-products.data');
     Route::get('/qnap-products/add-product', [QNAPProductController::class, 'add_product'])->name('add-product.index');
     Route::post('/qnap-products/add-product/store', [QNAPProductController::class, 'store_product'])->name('add-product.post');
     Route::get('/qnap-products/import-product', [ImportQNAPProductController::class, 'import_product'])->name('import-product.index');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\MasterData;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\ProductDataTableRequest;
 use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Services\Product\ProductDataTableService;
 use App\Http\Services\Product\ProductService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,6 +26,15 @@ class QNAPProductController extends Controller
         return view('dashboard.master_data.qnap_products.index', [
             'title' => 'QNAP Products - ' . config('app.name')
         ]);
+    }
+
+    public function getData(ProductDataTableService $productDataTableService, ProductDataTableRequest $request)
+    {
+        if ($request->ajax()) {
+            return $productDataTableService->getDataTable($request);
+        }
+
+        abort(404);
     }
 
     public function add_product(): View
